@@ -12,10 +12,10 @@ jobs:
             - uses: actions/checkout@main
             - uses: actions/setup-python@v3
               with:
-                python-version: 3.8
+                python-version: 3.9
             - run: zip -r package.zip ./*
             - run: pip3 install awscli
-            - run: aws lambda update-function-code --function-name DeployTest --zip-file fileb://package.zip --publish
+            - run: aws lambda update-function-code --function-name LambdaDeploy --zip-file fileb://package.zip --publish
               env:
                 AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
                 AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
